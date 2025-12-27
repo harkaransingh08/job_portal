@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FiSearch, FiUser, FiBell, FiMessageSquare, FiBriefcase, FiMenu, FiX, FiHome, FiUsers, FiTrendingUp } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
-import logo from '../images/Logo.png';    
+import logo from '../images/logo.png';    
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
