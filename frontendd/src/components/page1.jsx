@@ -14,17 +14,17 @@ const HeroSection = () => {
     // Add your search logic here
   };
 
-  const features = [
-    "AI-powered job matching",
-    "Remote work opportunities",
-    "Instant apply feature",
-    "Salary transparency",
-    "Company reviews",
-    "Career growth tracking"
-  ];
+  // const features = [
+  //   "AI-powered job matching",
+  //   "Remote work opportunities",
+  //   "Instant apply feature",
+  //   "Salary transparency",
+  //   "Company reviews",
+  //   "Career growth tracking"
+  // ];
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 overflow-hidden">
+    <div className="relative min-h-screen cursor-pointer bg-gradient-to-br from-gray-50 to-blue-50 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 left-1/4 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
@@ -99,7 +99,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="max-w-4xl mx-auto bg-white rounded-2xl shadow-2xl p-6 md:p-8 border border-gray-100"
+            className="max-w-4xl mx-auto mt-40 bg-white rounded-2xl shadow-2xl p-6 md:p-8 border border-gray-100"
           >
             <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center justify-center gap-2">
               <FiSearch className="text-blue-500" />
@@ -228,7 +228,7 @@ const HeroSection = () => {
 
             {/* Quick Filters */}
             <div className="mt-6 pt-6 border-t border-gray-100">
-              <p className="text-gray-600 hover:text-purple-500 hover:underline font-bold text-sm mb-3">MOST SEARCHED JOB POSITIONS:</p>
+              <p className="text-gray-600 hover:text-purple-500 hover:underline font-bold text-sm mb-3">MOST SEARCHED JOBS POSITIONS:</p>
               <div className="flex flex-wrap gap-2">
                 {['Software Engineer', 'Remote', 'React Developer', 'Data Scientist', 'UI/UX Designer', 'Backend Engineer'].map((tag) => (
                   <button
@@ -244,7 +244,7 @@ const HeroSection = () => {
           </motion.div>
 
           {/* Features Grid */}
-          <motion.div 
+          {/* <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8 }}
@@ -258,7 +258,7 @@ const HeroSection = () => {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </motion.div> */}
         </div>
       </div>
 
