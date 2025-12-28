@@ -215,7 +215,7 @@ const HeroSection = () => {
               </div>
 
               {/* Search Button */}
-              <div className="pt-4">
+              <div className="pt-4 flex items-center justify-center">
                 <button
                   type="submit"
                   className="group w-full md:w-auto flex items-center justify-center space-x-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 shadow-lg"
