@@ -1,23 +1,18 @@
 import React, { useState } from 'react';
-import { FiSearch, FiMapPin, FiBriefcase, FiCheckCircle, FiTrendingUp, FiUsers, FiStar, FiArrowRight } from 'react-icons/fi';
+import { FiSearch, FiMapPin, FiBriefcase, FiCheckCircle, FiTrendingUp, FiUsers, FiStar, FiArrowRight, FiDollarSign, FiTarget } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 
 const HeroSection = () => {
   const [jobTitle, setJobTitle] = useState('');
   const [location, setLocation] = useState('');
+  const [position, setPosition] = useState('');
+  const [expectedSalary, setExpectedSalary] = useState('');
 
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log('Searching for:', { jobTitle, location });
+    console.log('Searching for:', { jobTitle, location, position, expectedSalary });
     // Add your search logic here
   };
-
-  const stats = [
-    { number: "100K+", label: "Tech Jobs", icon: <FiBriefcase />, color: "from-blue-500 to-cyan-400" },
-    { number: "50K+", label: "Companies", icon: <FiUsers />, color: "from-purple-500 to-pink-500" },
-    { number: "10K+", label: "Success Stories", icon: <FiStar />, color: "from-green-500 to-emerald-400" },
-    { number: "35%", label: "Faster Hiring", icon: <FiTrendingUp />, color: "from-orange-500 to-yellow-400" },
-  ];
 
   const features = [
     "AI-powered job matching",
@@ -54,7 +49,7 @@ const HeroSection = () => {
           >
             <FiTrendingUp className="text-green-500" />
             <span className="text-sm flex gap-2 font-medium text-gray-700">
-              🚀 <h3>Newely passed students getting their jobs</h3>
+              🚀 <h3>Newly passed students getting their jobs</h3>
             </span>
           </motion.div>
 
@@ -123,7 +118,7 @@ const HeroSection = () => {
                         type="text"
                         value={jobTitle}
                         onChange={(e) => setJobTitle(e.target.value)}
-                        placeholder="Job title, keywords, or company"
+                        placeholder="Job Title, Skills, or Company"
                         className="w-full bg-transparent outline-none text-gray-800 placeholder-gray-500 text-lg"
                       />
                       {jobTitle && (
@@ -149,7 +144,7 @@ const HeroSection = () => {
                         type="text"
                         value={location}
                         onChange={(e) => setLocation(e.target.value)}
-                        placeholder="City, state, or remote"
+                        placeholder="City, State, or Remote"
                         className="w-full bg-transparent outline-none text-gray-800 placeholder-gray-500 text-lg"
                       />
                       {location && (
@@ -164,6 +159,59 @@ const HeroSection = () => {
                     </div>
                   </div>
                 </div>
+
+                {/* Position Input */}
+                <div className="relative group">
+                  <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-emerald-400 rounded-xl blur opacity-25 group-hover:opacity-75 transition duration-300"></div>
+                  <div className="relative bg-white rounded-xl p-1">
+                    <div className="flex items-center bg-gray-50 rounded-lg px-4 py-4">
+                      <FiTarget className="text-gray-400 mr-3 flex-shrink-0" />
+                      <input
+                        type="text"
+                        value={position}
+                        onChange={(e) => setPosition(e.target.value)}
+                        placeholder="Position (e.g., Full-time, Internship)"
+                        className="w-full bg-transparent outline-none text-gray-800 placeholder-gray-500 text-lg"
+                      />
+                      {position && (
+                        <button 
+                          type="button"
+                          onClick={() => setPosition('')}
+                          className="text-gray-400 hover:text-gray-600 ml-2"
+                        >
+                          ✕
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Expected Salary Input */}
+                <div className="relative group">
+                  <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-red-400 rounded-xl blur opacity-25 group-hover:opacity-75 transition duration-300"></div>
+                  <div className="relative bg-white rounded-xl p-1">
+                    <div className="flex items-center bg-gray-50 rounded-lg px-4 py-4">
+                      <FiDollarSign className="text-gray-400 mr-3 flex-shrink-0" />
+                      <input
+                        type="text"
+                        value={expectedSalary}
+                        onChange={(e) => setExpectedSalary(e.target.value)}
+                        placeholder="Expected Salary (e.g., $60,000)"
+                        className="w-full bg-transparent outline-none text-gray-800 placeholder-gray-500 text-lg"
+                      />
+                      {expectedSalary && (
+                        <button 
+                          type="button"
+                          onClick={() => setExpectedSalary('')}
+                          className="text-gray-400 hover:text-gray-600 ml-2"
+                        >
+                          ✕
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                </div>
+                
               </div>
 
               {/* Search Button */}
@@ -172,7 +220,7 @@ const HeroSection = () => {
                   type="submit"
                   className="group w-full md:w-auto flex items-center justify-center space-x-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 shadow-lg"
                 >
-                  <span>SEARCH 10,000+ JOBS</span>
+                  <span>SEARCH COMPANIES</span>
                   <FiArrowRight className="group-hover:translate-x-2 transition-transform" />
                 </button>
               </div>
@@ -180,7 +228,7 @@ const HeroSection = () => {
 
             {/* Quick Filters */}
             <div className="mt-6 pt-6 border-t border-gray-100">
-              <p className="text-gray-600 text-sm mb-3">Popular searches:</p>
+              <p className="text-gray-600 hover:text-purple-500 hover:underline font-bold text-sm mb-3">MOST SEARCHED JOB POSITIONS:</p>
               <div className="flex flex-wrap gap-2">
                 {['Software Engineer', 'Remote', 'React Developer', 'Data Scientist', 'UI/UX Designer', 'Backend Engineer'].map((tag) => (
                   <button
@@ -192,37 +240,6 @@ const HeroSection = () => {
                   </button>
                 ))}
               </div>
-            </div>
-          </motion.div>
-
-          {/* Stats Section */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-            className="mt-16"
-          >
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-              {stats.map((stat, index) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6 + index * 0.1 }}
-                  className="relative group"
-                >
-                  <div className={`absolute inset-0 bg-gradient-to-r ${stat.color} rounded-xl blur opacity-0 group-hover:opacity-30 transition duration-300`}></div>
-                  <div className="relative bg-white/80 backdrop-blur-sm rounded-xl p-6 text-center shadow-lg border border-gray-100">
-                    <div className="flex justify-center mb-3">
-                      <div className={`p-3 rounded-lg bg-gradient-to-r ${stat.color} text-white`}>
-                        {stat.icon}
-                      </div>
-                    </div>
-                    <div className="text-3xl font-bold text-gray-900 mb-1">{stat.number}</div>
-                    <div className="text-gray-600 font-medium">{stat.label}</div>
-                  </div>
-                </motion.div>
-              ))}
             </div>
           </motion.div>
 
@@ -265,8 +282,8 @@ const HeroSection = () => {
               delay: i * 0.5,
             }}
           >
-            <div className="text-sm font-medium text-gray-700">Senior Developer</div>
-            <div className="text-xs text-gray-500">$120K+ • Remote</div>
+            <div className="text-sm font-medium text-gray-700">React Developer</div>
+            <div className="text-xs text-gray-500">$80K+ • Remote</div>
           </motion.div>
         ))}
       </div>
