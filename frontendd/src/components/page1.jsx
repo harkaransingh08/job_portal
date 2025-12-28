@@ -48,8 +48,11 @@ const HeroSection = () => {
             className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm mb-8"
           >
             <FiTrendingUp className="text-green-500" />
-            <span className="text-sm flex gap-2 font-medium text-gray-700">
-              🚀 <h3>Newly passed students getting their jobs</h3>
+            <span className="text-sm flex gap-2 font-medium hover:text-blue-500 text-gray-700">
+              🚀 <motion.h3
+              initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+              >Newly passed students getting their jobs</motion.h3>
             </span>
           </motion.div>
 
