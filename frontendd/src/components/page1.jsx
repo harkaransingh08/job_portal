@@ -245,23 +245,6 @@ const HeroSection = () => {
               </div>
             </div>
           </motion.div>
-
-          {/* Features Grid */}
-          {/* <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8 }}
-            className="mt-16 max-w-4xl mx-auto"
-          >
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              {features.map((feature, index) => (
-                <div key={feature} className="flex items-center space-x-2 text-gray-700">
-                  <FiCheckCircle className="text-green-500 flex-shrink-0" />
-                  <span className="text-sm md:text-base">{feature}</span>
-                </div>
-              ))}
-            </div>
-          </motion.div> */}
         </div>
       </div>
 

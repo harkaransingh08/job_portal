@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FiSearch, FiUser, FiBell, FiMessageSquare, FiBriefcase, FiMenu, FiX, FiHome, FiUsers, FiTrendingUp } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
-import logo from '../images/logo.png';    
+import logo from '../images/logo.png';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,14 +19,14 @@ const Navbar = () => {
     <nav className="bg-white shadow-md border-b border-gray-200 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          
+
           {/* Logo Section */}
           <div className="flex items-center space-x-3">
             <div className="flex items-center space-x-2">
               <div className='w-30'>
                 <img src={logo} alt="" />
               </div>
-             </div>
+            </div>
           </div>
 
           {/* Desktop Navigation */}
@@ -45,9 +45,9 @@ const Navbar = () => {
 
           {/* Right Side Actions */}
           <div className="hidden md:flex items-center space-x-4">
-            
+
             {/* Search Button */}
-            <button 
+            <button
               onClick={() => setIsSearchOpen(!isSearchOpen)}
               className="p-2 text-gray-600 hover:text-blue-600 hover:bg-gray-100 rounded-full transition-colors"
             >
@@ -76,19 +76,23 @@ const Navbar = () => {
               <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-medium">
                 JD
               </div>
-              <span className="text-gray-700 font-medium hidden lg:block">John Doe</span>
+              <button
+                className=" px-8 py-1  rounded-lg 
+                 bg-blue-600 text-white  font-semibold  shadow-md hover:bg-blue-700 hover:shadow-lg
+                  active:bg-blue-800 transition-all duration-200">Sign Up</button>
+
             </div>
           </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center space-x-3">
-            <button 
+            <button
               onClick={() => setIsSearchOpen(!isSearchOpen)}
               className="p-2 text-gray-600 hover:text-blue-600"
             >
               <FiSearch size={20} />
             </button>
-            
+
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 text-gray-600 hover:text-blue-600"
@@ -160,20 +164,21 @@ const Navbar = () => {
                   <span className="font-medium">{item.name}</span>
                 </a>
               ))}
-              
+
               <div className="pt-3 border-t border-gray-200">
                 <button className="w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white px-4 py-3 rounded-md font-medium hover:from-green-600 hover:to-emerald-700 transition-all duration-200 shadow-sm mb-3">
                   Post a Job
                 </button>
-                
+
                 <div className="flex items-center justify-between px-3 py-3 bg-gray-50 rounded-md">
                   <div className="flex items-center space-x-3">
                     <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-medium">
                       JD
                     </div>
                     <div>
-                      <p className="font-medium text-gray-900">John Doe</p>
-                      <p className="text-sm text-gray-500">Tech Recruiter</p>
+                      <button>
+                        SignUp
+                      </button>
                     </div>
                   </div>
                   <button className="text-gray-400 hover:text-gray-600">
