@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FiSearch, FiUser, FiBell, FiMessageSquare, FiBriefcase, FiMenu, FiX, FiHome, FiUsers, FiTrendingUp } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
 import logo from '../images/logo.png';
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -44,7 +45,7 @@ const Navbar = () => {
           </div>
 
           {/* Right Side Actions */}
-          <div className="hidden md:flex items-center">
+          <div className="hidden md:flex items-center gap-4">
 
             {/* Search Button */}
             <button
@@ -63,16 +64,19 @@ const Navbar = () => {
             {/* User Profile */}
             <div className="flex items-center gap-5">
 
-              <button
-                className=" px-8 py-1  rounded-lg 
-                 bg-blue-600 text-white  font-semibold  shadow-md hover:bg-blue-700 hover:shadow-lg
-                  active:bg-blue-800 transition-all duration-200">Sign Up</button>
+              <Link
+                to="/signup"
+                className="px-6 py-2 rounded-lg bg-blue-600 text-white font-semibold shadow-md hover:bg-blue-700 transition-all duration-200"
+              >
+                Sign Up
+              </Link>
+
 
             </div>
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center space-x-3">
+          <div className="md:hidden flex items-center ">
             <button
               onClick={() => setIsSearchOpen(!isSearchOpen)}
               className="p-2 text-gray-600 hover:text-blue-600"
@@ -139,7 +143,7 @@ const Navbar = () => {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden bg-white border-t border-gray-200"
           >
-            <div className="px-4 py-3 space-y-1">
+            <div className="px-4 py-3">
               {navItems.map((item) => (
                 <a
                   key={item.name}
@@ -152,24 +156,21 @@ const Navbar = () => {
                 </a>
               ))}
 
-              <div className="pt-3 border-t border-gray-200">
-                <button className="w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white px-4 py-3 rounded-md font-medium hover:from-green-600 hover:to-emerald-700 transition-all duration-200 shadow-sm mb-3">
+              <div className="flex items-center gap-4">
+                <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md font-medium">
                   Post a Job
                 </button>
 
-                <div className="flex items-center justify-between px-3 py-3 bg-gray-50 rounded-md">
-                  <div className="flex items-center space-x-3">
-                    <div>
-                      <button>
-                        SignUp
-                      </button>
-                    </div>
-                  </div>
-                  <button className="text-gray-400 hover:text-gray-600">
-                    <FiBell size={20} />
-                  </button>
-                </div>
+                <Link
+                  to="/signup"
+                  onClick={() => setIsOpen(false)}
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium"
+                >
+                  Sign Up
+                </Link>
+
               </div>
+
             </div>
           </motion.div>
         )}
