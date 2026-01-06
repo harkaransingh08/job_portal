@@ -17,12 +17,12 @@ const Navbar = () => {
 
   return (
     <nav className="bg-white shadow-md border-b border-gray-200 sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+      <div className="max-w-7xl mx-auto lg:px-8">
+        <div className="flex justify-between items-center ">
 
           {/* Logo Section */}
-          <div className="flex items-center space-x-3">
-            <div className="flex items-center space-x-2">
+          <div className="flex items-center">
+            <div className="flex items-center ">
               <div className='w-30'>
                 <img src={logo} alt="" />
               </div>
@@ -44,7 +44,7 @@ const Navbar = () => {
           </div>
 
           {/* Right Side Actions */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center">
 
             {/* Search Button */}
             <button
@@ -59,23 +59,10 @@ const Navbar = () => {
               Post a Job
             </button>
 
-            {/* Notification */}
-            <button className="relative p-2 text-gray-600 hover:text-blue-600 hover:bg-gray-100 rounded-full transition-colors">
-              <FiBell size={20} />
-              <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
-            </button>
-
-            {/* Messages */}
-            <button className="relative p-2 text-gray-600 hover:text-blue-600 hover:bg-gray-100 rounded-full transition-colors">
-              <FiMessageSquare size={20} />
-              <span className="absolute top-1 right-1 w-2 h-2 bg-blue-500 rounded-full"></span>
-            </button>
 
             {/* User Profile */}
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-medium">
-                JD
-              </div>
+            <div className="flex items-center gap-5">
+
               <button
                 className=" px-8 py-1  rounded-lg 
                  bg-blue-600 text-white  font-semibold  shadow-md hover:bg-blue-700 hover:shadow-lg
@@ -112,7 +99,7 @@ const Navbar = () => {
               className="border-t border-gray-100"
             >
               <div className="py-4">
-                <div className="flex flex-col md:flex-row gap-3">
+                <div className="flex flex-col md:flex-row gap-5">
                   <div className="flex-1">
                     <div className="flex items-center bg-gray-50 rounded-lg px-4 py-3 border border-gray-200">
                       <FiSearch className="text-gray-400 mr-3" />
@@ -172,9 +159,6 @@ const Navbar = () => {
 
                 <div className="flex items-center justify-between px-3 py-3 bg-gray-50 rounded-md">
                   <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-medium">
-                      JD
-                    </div>
                     <div>
                       <button>
                         SignUp
