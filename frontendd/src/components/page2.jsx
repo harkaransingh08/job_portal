@@ -16,7 +16,7 @@ export default function Page2() {
     {
       imageUrl: 'https://www.computerworld.com/wp-content/uploads/2025/09/4064955-0-25886200-1759163116-shutterstock_2390551643.jpg?quality=50&strip=all',
       websiteUrl: 'https://www.accenture.com/in-en/careers/life-at-accenture/entry-level?',
-      companyName: 'accenture'
+      companyName: 'Accenture'
     },
     {
       imageUrl: 'https://assets.peoplematters.in/images/ca4d360f-034e-41f7-990c-8789edd039bb.jpg',
@@ -65,171 +65,201 @@ export default function Page2() {
   };
 
   return (
-    <div style={styles.container} className="font-sans">
-      <h3
-        style={styles.title}
-        className="font-sans font-semibold hover:text-blue-600 cursor-pointer hover:underline text-xl text-gray-800"
-      >
-        These are some top companies
-      </h3>
-      
-      <Swiper
-        spaceBetween={30}
-        centeredSlides={true}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
-        pagination={{
-          clickable: true,
-        }}
-        navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper"
-        style={styles.swiper}
-      >
-        {imageData.map((item, index) => (
-          <SwiperSlide key={index} style={styles.slide}>
-            <div 
-              style={styles.imageContainer}
-              onClick={() => handleImageClick(item.websiteUrl, item.companyName)}
-              className="cursor-pointer transform transition-transform duration-300 hover:scale-[1.02]"
-            >
-              <img
-                src={`${item.imageUrl}?w=1200&h=600&fit=crop`}
-                alt={`Slide ${index + 1}`}
-                style={styles.image}
-                className="transition-opacity duration-300 hover:opacity-90"
-              />
-              <div style={styles.imageOverlay}>
-                <div style={styles.overlayContent}>
-                  <h4 style={styles.companyName} className="font-sans font-semibold">
-                    {item.companyName}
-                  </h4>
-                  <p style={styles.clickText} className="font-sans">
-                    Click to visit website →
-                  </p>
-                </div>
-              </div>
-              <div
-                style={styles.slideNumber}
-                className="font-sans font-medium"
-              >
-                {index + 1}
-              </div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+    <div className="  bg-gradient-to-b from-white via-blue-50  to-gray-50 mx-auto px-4 sm:px-6 overflow-hidden lg:px-8  md:py-16 w-full font-sans">
+     <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-0 left-1/4 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+        <div className="absolute top-0 right-1/4 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+        <div className="absolute -bottom-8 left-1/3 w-72 h-72 bg-cyan-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
+      </div>
+      {/* Title Section */}
 
-      <div style={styles.instructions} className="mt-8 p-4 bg-gray-50 hover:bg-gray-100 cursor-pointer transition-colors duration-300 rounded-lg">
-        <p className="text-gray-700 text-center">
-          <strong>Note:</strong> Each image is clickable and will open the company's website in a new tab
+      <div className="text-center mb-8 md:mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold cursor-pointer hover:text-blue-400 text-gray-900 mb-3">
+          Top Companies Hiring Now
+        </h2>
+        <p className="text-lg text-gray-600 max-w-3xl cursor-pointer hover:text-purple-400 mx-auto">
+          Discover career opportunities at leading global companies
         </p>
       </div>
+
+      {/* Swiper Container */}
+      <div className="relative mb-10">
+        <Swiper
+          spaceBetween={20}
+          slidesPerView={1}
+          centeredSlides={true}
+          loop={true}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          }}
+          pagination={{
+            clickable: true,
+            dynamicBullets: true,
+          }}
+          navigation={{
+            nextEl: '.swiper-button-next-custom',
+            prevEl: '.swiper-button-prev-custom',
+          }}
+          modules={[Autoplay, Pagination, Navigation]}
+          breakpoints={{
+            640: {
+              slidesPerView: 1,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 25,
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 30,
+            },
+          }}
+          className="rounded-2xl overflow-hidden shadow-2xl"
+        >
+          {imageData.map((item, index) => (
+            <SwiperSlide key={index} className="pb-12">
+              <div 
+                onClick={() => handleImageClick(item.websiteUrl, item.companyName)}
+                className="group relative h-[400px] md:h-[450px] rounded-xl overflow-hidden cursor-pointer transition-all duration-500 hover:shadow-2xl hover:-translate-y-2"
+              >
+                {/* Background Image */}
+                <img
+                  src={item.imageUrl}
+                  alt={`${item.companyName} Careers`}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
+                />
+                
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
+                
+                {/* Content Overlay */}
+                <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
+                  <div className="transform transition-all duration-500 group-hover:-translate-y-2">
+                    {/* Company Badge */}
+                    <div className="inline-flex items-center px-4 py-2 bg-blue-600/90 backdrop-blur-sm rounded-full mb-4">
+                      <span className="text-white font-semibold text-sm">
+                        #{(index + 1).toString().padStart(2, '0')}
+                      </span>
+                    </div>
+                    
+                    {/* Company Name */}
+                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 drop-shadow-lg">
+                      {item.companyName}
+                    </h3>
+                    
+                    {/* CTA Button */}
+                    <div className="flex items-center justify-between">
+                      <span className="text-blue-200 text-sm md:text-base font-medium">
+                        View Careers →
+                      </span>
+                      <div className="flex items-center space-x-2">
+                        <span className="text-xs text-white/80 bg-white/20 px-2 py-1 rounded">
+                          Featured
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Hover Indicator */}
+                  <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-x-0 translate-x-4">
+                    <div className="bg-white/20 backdrop-blur-sm p-2 rounded-full">
+                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Hover Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-purple-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+        {/* Custom Navigation Buttons */}
+        <div className="swiper-button-prev-custom absolute left-4 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center shadow-xl cursor-pointer hover:bg-white hover:scale-110 transition-all duration-300">
+          <svg className="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+        </div>
+        <div className="swiper-button-next-custom absolute right-4 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center shadow-xl cursor-pointer hover:bg-white hover:scale-110 transition-all duration-300">
+          <svg className="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </div>
+      </div>
+
+      {/* Stats Section */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+        {[
+          { value: '500+', label: 'Companies' },
+          { value: '10K+', label: 'Open Positions' },
+          { value: '85%', label: 'Success Rate' },
+          { value: '30 Days', label: 'Avg. Response' },
+        ].map((stat, index) => (
+          <div 
+            key={index}
+            className="bg-gradient-to-br from-white to-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-gray-100"
+          >
+            <div className="text-3xl md:text-4xl font-bold text-blue-600 mb-2">
+              {stat.value}
+            </div>
+            <div className="text-gray-600 font-medium">
+              {stat.label}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Instructions */}
+      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-6 md:p-8 border border-blue-100">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          <div>
+            <h4 className="text-xl font-bold text-gray-900 mb-2">
+              Ready to apply?
+            </h4>
+            <p className="text-gray-600">
+              Click on any company card to visit their careers page and explore opportunities.
+            </p>
+          </div>
+          <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-2">
+              <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+              <span className="text-sm text-gray-600">Active Hiring</span>
+            </div>
+            <button className="px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300 shadow-md hover:shadow-lg">
+              View All Companies
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Add custom CSS for Swiper */}
+      <style jsx>{`
+        .swiper-pagination-bullet {
+          width: 12px !important;
+          height: 12px !important;
+          background: rgba(59, 130, 246, 0.5) !important;
+          opacity: 1 !important;
+        }
+        .swiper-pagination-bullet-active {
+          background: #2563eb !important;
+          transform: scale(1.2);
+        }
+        .swiper-pagination {
+          position: relative !important;
+          margin-top: 2rem !important;
+        }
+        .swiper-slide {
+          height: auto !important;
+          padding-bottom: 50px !important;
+        }
+      `}</style>
     </div>
   );
 }
-
-const styles = {
-  container: {
-    maxWidth: '1200px',
-    margin: '0 auto',
-    padding: '40px 20px',
-  },
-  title: {
-    textAlign: 'center',
-    marginBottom: '10px',
-  },
-  subtitle: {
-    textAlign: 'center',
-    marginBottom: '30px',
-  },
-  swiper: {
-    borderRadius: '15px',
-    overflow: 'hidden',
-    boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
-  },
-  slide: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '500px',
-    backgroundColor: '#f5f5f5',
-  },
-  imageContainer: {
-    position: 'relative',
-    width: '100%',
-    height: '100%',
-    cursor: 'pointer',
-  },
-  image: {
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
-  },
-  imageOverlay: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.3)',
-    opacity: 0,
-    transition: 'opacity 0.3s ease',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  overlayContent: {
-    textAlign: 'center',
-    color: 'white',
-    padding: '20px',
-  },
-  companyName: {
-    fontSize: '24px',
-    marginBottom: '10px',
-    fontWeight: 'bold',
-  },
-  clickText: {
-    fontSize: '16px',
-    backgroundColor: 'rgba(0, 112, 243, 0.8)',
-    padding: '8px 16px',
-    borderRadius: '20px',
-    display: 'inline-block',
-  },
-  slideNumber: {
-    position: 'absolute',
-    bottom: '20px',
-    right: '20px',
-    backgroundColor: 'rgba(0,0,0,0.7)',
-    color: 'white',
-    padding: '8px 16px',
-    borderRadius: '20px',
-    fontSize: '14px',
-    zIndex: 2,
-  },
-  instructions: {
-    textAlign: 'center',
-    marginTop: '20px',
-  },
-};
-
-// Add hover effect for the overlay
-const styleSheet = document.createElement("style");
-styleSheet.innerHTML = `
-  .mySwiper .swiper-slide .cursor-pointer:hover .imageOverlay {
-    opacity: 1 !important;
-  }
-  
-  .mySwiper .swiper-slide .cursor-pointer:hover .clickText {
-    animation: pulse 1.5s infinite;
-  }
-  
-  @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-  }
-`;
-document.head.appendChild(styleSheet);

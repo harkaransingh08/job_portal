@@ -2,45 +2,51 @@ import React, { useState } from 'react';
 import { FiSearch, FiUser, FiBell, FiMessageSquare, FiBriefcase, FiMenu, FiX, FiHome, FiUsers, FiTrendingUp } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
 import logo from '../images/logo.png';
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const location = useLocation();
 
   const navItems = [
-    { name: 'Home', icon: <FiHome />, path: '#' },
-    { name: 'Find Jobs', icon: <FiSearch />, path: '#jobs' },
-    { name: 'Companies', icon: <FiBriefcase />, path: '#companies' },
-    { name: 'Career Advice', icon: <FiTrendingUp />, path: '#advice' },
-    { name: 'Community', icon: <FiUsers />, path: '#community' },
-  ];
+  { name: 'Home', icon: <FiHome />, path: '/home' },
+  { name: 'Find Jobs', icon: <FiSearch />, path: '/jobs' },
+  { name: 'Companies', icon: <FiBriefcase />, path: '/companies' },
+  { name: 'Career Advice', icon: <FiTrendingUp />, path: '/advice' },
+  { name: 'Community', icon: <FiUsers />, path: '/community' },
+];
+
 
   return (
     <nav className="bg-white shadow-md border-b border-gray-200 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto lg:px-8">
-        <div className="flex justify-between items-center ">
+        <div className="flex justify-between items-center h-16">
 
           {/* Logo Section */}
           <div className="flex items-center">
-            <div className="flex items-center ">
+            <Link to="/" className="flex items-center">
               <div className='w-30'>
-                <img src={logo} alt="" />
+                <img src={logo} alt="CareerConnect Logo" className="h-10 w-auto" />
               </div>
-            </div>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.name}
-                href={item.path}
-                className="flex items-center space-x-1 text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 py-2 rounded-md transition-colors duration-200"
+                to={item.path}
+                className={`flex items-center space-x-1 px-3 py-2 rounded-md transition-colors duration-200 ${
+                  location.pathname === item.path
+                    ? 'text-blue-600 bg-blue-50'
+                    : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50'
+                }`}
               >
                 <span className="text-lg">{item.icon}</span>
                 <span className="font-medium">{item.name}</span>
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -56,27 +62,23 @@ const Navbar = () => {
             </button>
 
             {/* Post a Job Button */}
-            <button className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-4 py-2 rounded-md font-medium hover:from-green-600 hover:to-emerald-700 transition-all duration-200 shadow-sm">
+            <button className="bg-gradient-to-r hover:shadow-2xl hover:scale-105  from-green-500 to-emerald-600 text-white px-4 py-2 rounded-md font-medium hover:from-green-600 hover:to-emerald-700 transition-all duration-200 shadow-sm">
               Post a Job
             </button>
 
-
             {/* User Profile */}
             <div className="flex items-center gap-5">
-
               <Link
                 to="/signup"
-                className="px-6 py-2 rounded-lg bg-blue-600 text-white font-semibold shadow-md hover:bg-blue-700 transition-all duration-200"
+                className="px-6 py-2 rounded-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 bg-blue-600 text-white font-semibold shadow-md hover:bg-blue-700 "
               >
                 Sign Up
               </Link>
-
-
             </div>
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center ">
+          <div className="md:hidden flex items-center gap-4">
             <button
               onClick={() => setIsSearchOpen(!isSearchOpen)}
               className="p-2 text-gray-600 hover:text-blue-600"
@@ -143,34 +145,36 @@ const Navbar = () => {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden bg-white border-t border-gray-200"
           >
-            <div className="px-4 py-3">
+            <div className="px-4 py-3 space-y-2">
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.name}
-                  href={item.path}
+                  to={item.path}
                   onClick={() => setIsOpen(false)}
-                  className="flex items-center space-x-3 px-3 py-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors"
+                  className={`flex items-center space-x-3 px-3 py-3 rounded-md transition-colors ${
+                    location.pathname === item.path
+                      ? 'text-blue-600 bg-blue-50'
+                      : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50'
+                  }`}
                 >
                   <span className="text-lg">{item.icon}</span>
                   <span className="font-medium">{item.name}</span>
-                </a>
+                </Link>
               ))}
 
-              <div className="flex items-center gap-4">
-                <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md font-medium">
+              <div className="flex flex-col gap-3 pt-4 border-t border-gray-200">
+                <button className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-4 py-3 rounded-md font-medium transition-all duration-200">
                   Post a Job
                 </button>
 
                 <Link
                   to="/signup"
                   onClick={() => setIsOpen(false)}
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium"
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-md font-medium text-center transition-all duration-200"
                 >
                   Sign Up
                 </Link>
-
               </div>
-
             </div>
           </motion.div>
         )}
